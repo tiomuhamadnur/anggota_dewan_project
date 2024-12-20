@@ -1,7 +1,7 @@
 @extends('layout.base')
 
 @section('title-head')
-    <title>Desa</title>
+    <title>Desa/Kelurahan</title>
 @endsection
 
 @section('page-header')
@@ -10,13 +10,13 @@
             <div class="row g-2 align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        Data Desa
+                        Data Desa/Kelurahan
                     </h2>
                 </div>
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <span class="d-none d-sm-inline">
+                        <span class="d-sm-inline">
                             <div class='dropdown'>
                                 <button class='btn btn-outline-secondary dropdown-toggle align-text-top'
                                     data-bs-toggle='dropdown'>
@@ -69,7 +69,7 @@
                             </div>
                         </span>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-                            class="btn btn-primary d-none d-sm-inline-block">
+                            class="btn btn-primary d-sm-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round">

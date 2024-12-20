@@ -6,6 +6,13 @@
     });
 </script>
 <script>
+    $('#exportModal').on('show.bs.modal', function(e) {
+        var url = $(e.relatedTarget).data('url');
+
+        document.getElementById("exportForm").action = url;
+    });
+</script>
+<script>
     function exportExcel() {
         $('#datatable-excel').click();
         console.log('klik');

@@ -16,7 +16,7 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <span class="d-none d-sm-inline">
+                        <span class="d-sm-inline">
                             <div class='dropdown'>
                                 <button class='btn btn-outline-secondary dropdown-toggle align-text-top'
                                     data-bs-toggle='dropdown'>
@@ -36,7 +36,7 @@
                                         Filter
                                     </a>
                                     <a class='dropdown-item' href='#' data-bs-toggle="modal"
-                                        data-bs-target="#exportModal">
+                                        data-bs-target="#exportModal" data-url="{{ route('kabupaten.export') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
@@ -51,7 +51,7 @@
                                         Export
                                     </a>
                                     <a class='dropdown-item' href='#' data-bs-toggle="modal"
-                                        data-bs-target="#importModal">
+                                        data-bs-target="#importKabupatenModal">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
@@ -69,7 +69,7 @@
                             </div>
                         </span>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-                            class="btn btn-primary d-none d-sm-inline-block">
+                            class="btn btn-primary d-sm-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -216,6 +216,58 @@
             </div>
         </div>
     </div>
+
+    <!-- Import Modal -->
+    <div class="modal modal-blur fade" id="importKabupatenModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form id="formImport" action="{{ route('kabupaten.import') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Provinsi</label>
+                            <select class="form-select" name="provinsi_id" id="provinsi_id">
+                                <option value="" selected disabled>- select option -</option>
+                                @foreach ($provinsi as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">File Import</label>
+                            <input type="file" class="form-control" name="file" autocomplete="off" required
+                                accept=".xls,.xlsx">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary ms-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-file-arrow-left">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                <path d="M15 15h-6" />
+                                <path d="M11.5 17.5l-2.5 -2.5l2.5 -2.5" />
+                            </svg>
+                            Import
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Import Modal -->
 @endsection
 
 @push('scripts')

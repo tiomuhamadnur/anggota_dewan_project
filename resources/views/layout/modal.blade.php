@@ -73,7 +73,11 @@
                             </a>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn btn-success w-100" onclick="exportExcel()">
+                            <form id="exportForm" action="#" method="POST">
+                                @csrf
+                                @method('post')
+                            </form>
+                            <button form="exportForm" type="submit" class="btn btn-success w-100">
                                 Export
                             </button>
                         </div>

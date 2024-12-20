@@ -69,7 +69,7 @@ class KecamatanDataTable extends DataTable
                     ->pageLength(10)
                     ->lengthMenu([10, 50, 100, 250, 500, 1000])
                     //->dom('Bfrtip')
-                    ->orderBy([1, 'asc'])
+                    // ->orderBy([4, 'asc'])
                     ->selectStyleSingle()
                     ->buttons([
                         [
@@ -89,13 +89,14 @@ class KecamatanDataTable extends DataTable
             Column::computed('#')
                     ->exportable(false)
                     ->printable(false)
+                    ->sortable(false)
                     ->width(60)
                     ->addClass('text-center'),
             Column::make('name')->title('Name'),
             Column::make('code')->title('Code'),
-            Column::make('full_code')->title('Full Code'),
-            Column::make('kabupaten.name')->title('Kabupaten'),
-            Column::make('kabupaten.provinsi.name')->title('Provinsi'),
+            Column::make('full_code')->title('Full Code')->sortable(false),
+            Column::make('kabupaten.name')->title('Kabupaten')->sortable(false),
+            Column::make('kabupaten.provinsi.name')->title('Provinsi')->sortable(false),
         ];
     }
 

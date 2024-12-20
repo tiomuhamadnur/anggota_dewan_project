@@ -35,9 +35,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::controller(DashboardController::class)->group(function () {
-        Route::get('/dashboard', 'index')->name('dashboard.index');
-    });
+    Route::resource('/dashboard', DashboardController::class);
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/user', 'index')->name('user.index');
@@ -49,8 +47,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/provinsi', ProvinsiController::class);
 
     Route::resource('/kabupaten', KabupatenController::class);
+    Route::controller(KabupatenController::class)->group(function () {
+        Route::post('/kabupaten/import', 'import')->name('kabupaten.import');
+        Route::post('/kabupaten/export', 'export')->name('kabupaten.export');
+    });
 
     Route::resource('/kecamatan', KecamatanController::class);
+    Route::controller(KecamatanController::class)->group(function () {
+        Route::post('/kecamatan/import', 'import')->name('kecamatan.import');
+        Route::post('/kecamatan/export', 'export')->name('kecamatan.export');
+    });
 
     Route::resource('/desa', DesaController::class);
 
