@@ -5,6 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    @env('production')
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    @endenv
     @yield('title-head')
     <!-- CSS files -->
     <link href="{{ asset('dist/css/tabler.min.css?1692870487') }}" rel="stylesheet" />
@@ -12,6 +15,8 @@
     <link href="{{ asset('dist/css/tabler-payments.min.css?1692870487') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-vendors.min.css?1692870487') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/demo.min.css?1692870487') }}" rel="stylesheet" />
+    @vite('resources/css/app.css')
+    @vite('resources/sass/app.scss')
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -64,11 +69,7 @@
 
     <!-- DataTables JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-    {{-- <script src="{{ asset('build/assets/app-U1wqgxYu.js') }}"></script> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-2L0jWIlw.css') }}"> --}}
-
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    @vite('resources/js/app.js')
 
     @stack('scripts')
     @yield('javascript')
