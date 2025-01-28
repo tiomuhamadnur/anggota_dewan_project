@@ -16,7 +16,7 @@
     <link href="{{ asset('dist/css/tabler-vendors.min.css?1692870487') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/demo.min.css?1692870487') }}" rel="stylesheet" />
     @vite('resources/css/app.css')
-    @vite('resources/sass/app.scss')
+    {{-- @vite('resources/sass/app.scss') --}}
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -60,8 +60,8 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Tabler Core -->
-    <script src="{{ asset('dist/js/tabler.min.js?1692870487') }}" defer></script>
-    <script src="{{ asset('dist/js/demo.min.js?1692870487') }}" defer></script>
+    {{-- <script src="{{ asset('dist/js/tabler.min.js?1692870487') }}" defer></script> --}}
+    {{-- <script src="{{ asset('dist/js/demo.min.js?1692870487') }}" defer></script> --}}
 
     <script src="{{ asset('dist/libs/nouislider/dist/nouislider.min.js?1692870487') }}" defer></script>
     <script src="{{ asset('dist/libs/litepicker/dist/litepicker.js?1692870487') }}" defer></script>
@@ -69,6 +69,7 @@
 
     <!-- DataTables JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script> --}}
     @vite('resources/js/app.js')
 
     @stack('scripts')
