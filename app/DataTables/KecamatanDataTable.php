@@ -94,7 +94,9 @@ class KecamatanDataTable extends DataTable
                     ->addClass('text-center'),
             Column::make('name')->title('Name'),
             Column::make('code')->title('Code'),
-            Column::make('full_code')->title('Full Code')->sortable(false),
+            Column::make('full_code')->title('Full Code')
+                    ->sortable(false)
+                    ->searchable(true),
             Column::make('kabupaten.name')->title('Kabupaten')->sortable(false),
             Column::make('kabupaten.provinsi.name')->title('Provinsi')->sortable(false),
         ];
